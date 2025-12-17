@@ -1,0 +1,487 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "ADF-VB8B-ETL-DEVEnv01"
+		},
+		"EventAzureBlobStorage1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'EventAzureBlobStorage1'"
+		},
+		"LS CSV SINK_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS CSV SINK'"
+		},
+		"LSAzureBlobStorage_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'LSAzureBlobStorage'"
+		},
+		"LSAzureSqlDatabase1_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LSAzureSqlDatabase1'"
+		},
+		"LSAzureSqlDatabase11_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LSAzureSqlDatabase11'"
+		},
+		"LSAzureSqlDatabase111_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LSAzureSqlDatabase111'"
+		},
+		"LSAzureSqlDatabase12_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LSAzureSqlDatabase12'"
+		},
+		"LSSqlServer1_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LSSqlServer1'"
+		},
+		"LS_Bulk_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_Bulk'"
+		},
+		"LS_Bulk_sink_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_Bulk_sink'"
+		},
+		"LS_CSV_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_CSV'"
+		},
+		"LS_Excel_sink_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_Excel_sink'"
+		},
+		"LS_Json_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_Json'"
+		},
+		"LS_Json_sink_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_Json_sink'"
+		},
+		"LS_SFTP_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_SFTP'"
+		},
+		"LS_SFTP_PQ_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_SFTP_PQ'"
+		},
+		"LS_SQL_Sink_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_SQL_Sink'"
+		},
+		"LS_Snowflake1_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_Snowflake1'"
+		},
+		"LS_rest_Sink_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_rest_Sink'"
+		},
+		"L_EXCEL_Storage_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'L_EXCEL_Storage'"
+		},
+		"blob2adlsAzureDataLakeStorage1_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'blob2adlsAzureDataLakeStorage1'"
+		},
+		"LS CSV SINK_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevvbsource01.dfs.core.windows.net/"
+		},
+		"LSAzureBlobStoragesink_sasUri": {
+			"type": "secureString",
+			"metadata": "Secure string for 'sasUri' of 'LSAzureBlobStoragesink'"
+		},
+		"LSAzureSqlDatabase1_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "sql-srvr-vb-dev11.database.windows.net"
+		},
+		"LSAzureSqlDatabase1_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "sql-db-vb-dev"
+		},
+		"LSAzureSqlDatabase1_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "accessdatadev11"
+		},
+		"LSAzureSqlDatabase11_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "sql-srvr-vb-dev11.database.windows.net"
+		},
+		"LSAzureSqlDatabase11_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "sql-db-vb-dev"
+		},
+		"LSAzureSqlDatabase11_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "accessdatadev11"
+		},
+		"LSAzureSqlDatabase111_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "sql-srvr-vb-dev11.database.windows.net"
+		},
+		"LSAzureSqlDatabase111_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "sql-db-vb-dev"
+		},
+		"LSAzureSqlDatabase111_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "accessdatadev11"
+		},
+		"LSAzureSqlDatabase12_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "sql-srvr-vb-dev11.database.windows.net"
+		},
+		"LSAzureSqlDatabase12_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "sql-db-vb-dev"
+		},
+		"LSAzureSqlDatabase12_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "accessdatadev11"
+		},
+		"LSSqlServer1_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "GURU\\SQLEXPRESS"
+		},
+		"LSSqlServer1_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "VB_PROJECT"
+		},
+		"LSSqlServer1_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "sa"
+		},
+		"LS_Bulk_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevvboardraw01.dfs.core.windows.net/"
+		},
+		"LS_Bulk_sink_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevvbsource01.dfs.core.windows.net/"
+		},
+		"LS_CSV_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevvboardraw01.dfs.core.windows.net/"
+		},
+		"LS_Excel_sink_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevvbsource01.dfs.core.windows.net/"
+		},
+		"LS_Json_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevvboardraw01.dfs.core.windows.net/"
+		},
+		"LS_Json_sink_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevvbsource01.dfs.core.windows.net/"
+		},
+		"LS_SFTP_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevvboardraw01.dfs.core.windows.net/"
+		},
+		"LS_SFTP_PQ_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevvbsource01.dfs.core.windows.net/"
+		},
+		"LS_SQL_Sink_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevvbsource01.dfs.core.windows.net/"
+		},
+		"LS_Snowflake1_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "DBAZURESNOW"
+		},
+		"LS_rest_Sink_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevvbsource01.dfs.core.windows.net/"
+		},
+		"LS_restapi_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://retoolapi.dev/myM1AQ/data"
+		},
+		"L_EXCEL_Storage_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevvboardraw01.dfs.core.windows.net/"
+		},
+		"blob2adlsAzureDataLakeStorage1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevvbsource01.dfs.core.windows.net/"
+		},
+		"Tr_sample_csv_properties_PL1_MASTER_parameters_Trigger": {
+			"type": "string",
+			"defaultValue": "Tr_sample_csv"
+		},
+		"Tr_sample_snowflake_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/862e4e41-f0a5-434c-bcd5-b750611199c6/resourceGroups/VB_DEV_B8_ETL/providers/Microsoft.Storage/storageAccounts/blobvbsnowdev2703"
+		},
+		"integrationRuntime1_properties_typeProperties_linkedInfo_resourceId": {
+			"type": "string",
+			"defaultValue": "/subscriptions/862e4e41-f0a5-434c-bcd5-b750611199c6/resourcegroups/ProjectDemo/providers/Microsoft.DataFactory/factories/gurusadf12345/integrationruntimes/integrationRuntime1"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "ADF-VB8B-ETL-DEVEnv01_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"EventAzureBlobStorage1_connectionString": {
+						"value": "[parameters('EventAzureBlobStorage1_connectionString')]"
+					},
+					"LS CSV SINK_accountKey": {
+						"value": "[parameters('LS CSV SINK_accountKey')]"
+					},
+					"LSAzureBlobStorage_connectionString": {
+						"value": "[parameters('LSAzureBlobStorage_connectionString')]"
+					},
+					"LSAzureSqlDatabase1_password": {
+						"value": "[parameters('LSAzureSqlDatabase1_password')]"
+					},
+					"LSAzureSqlDatabase11_password": {
+						"value": "[parameters('LSAzureSqlDatabase11_password')]"
+					},
+					"LSAzureSqlDatabase111_password": {
+						"value": "[parameters('LSAzureSqlDatabase111_password')]"
+					},
+					"LSAzureSqlDatabase12_password": {
+						"value": "[parameters('LSAzureSqlDatabase12_password')]"
+					},
+					"LS_Bulk_accountKey": {
+						"value": "[parameters('LS_Bulk_accountKey')]"
+					},
+					"LS_Bulk_sink_accountKey": {
+						"value": "[parameters('LS_Bulk_sink_accountKey')]"
+					},
+					"LS_CSV_accountKey": {
+						"value": "[parameters('LS_CSV_accountKey')]"
+					},
+					"LS_Excel_sink_accountKey": {
+						"value": "[parameters('LS_Excel_sink_accountKey')]"
+					},
+					"LS_Json_accountKey": {
+						"value": "[parameters('LS_Json_accountKey')]"
+					},
+					"LS_Json_sink_accountKey": {
+						"value": "[parameters('LS_Json_sink_accountKey')]"
+					},
+					"LS_SFTP_accountKey": {
+						"value": "[parameters('LS_SFTP_accountKey')]"
+					},
+					"LS_SFTP_PQ_accountKey": {
+						"value": "[parameters('LS_SFTP_PQ_accountKey')]"
+					},
+					"LS_SQL_Sink_accountKey": {
+						"value": "[parameters('LS_SQL_Sink_accountKey')]"
+					},
+					"LS_Snowflake1_password": {
+						"value": "[parameters('LS_Snowflake1_password')]"
+					},
+					"LS_rest_Sink_accountKey": {
+						"value": "[parameters('LS_rest_Sink_accountKey')]"
+					},
+					"LS CSV SINK_properties_typeProperties_url": {
+						"value": "[parameters('LS CSV SINK_properties_typeProperties_url')]"
+					},
+					"LSAzureBlobStoragesink_sasUri": {
+						"value": "[parameters('LSAzureBlobStoragesink_sasUri')]"
+					},
+					"LSAzureSqlDatabase1_properties_typeProperties_server": {
+						"value": "[parameters('LSAzureSqlDatabase1_properties_typeProperties_server')]"
+					},
+					"LSAzureSqlDatabase1_properties_typeProperties_database": {
+						"value": "[parameters('LSAzureSqlDatabase1_properties_typeProperties_database')]"
+					},
+					"LSAzureSqlDatabase1_properties_typeProperties_userName": {
+						"value": "[parameters('LSAzureSqlDatabase1_properties_typeProperties_userName')]"
+					},
+					"LSAzureSqlDatabase11_properties_typeProperties_server": {
+						"value": "[parameters('LSAzureSqlDatabase11_properties_typeProperties_server')]"
+					},
+					"LSAzureSqlDatabase11_properties_typeProperties_database": {
+						"value": "[parameters('LSAzureSqlDatabase11_properties_typeProperties_database')]"
+					},
+					"LSAzureSqlDatabase11_properties_typeProperties_userName": {
+						"value": "[parameters('LSAzureSqlDatabase11_properties_typeProperties_userName')]"
+					},
+					"LSAzureSqlDatabase111_properties_typeProperties_server": {
+						"value": "[parameters('LSAzureSqlDatabase111_properties_typeProperties_server')]"
+					},
+					"LSAzureSqlDatabase111_properties_typeProperties_database": {
+						"value": "[parameters('LSAzureSqlDatabase111_properties_typeProperties_database')]"
+					},
+					"LSAzureSqlDatabase111_properties_typeProperties_userName": {
+						"value": "[parameters('LSAzureSqlDatabase111_properties_typeProperties_userName')]"
+					},
+					"LSAzureSqlDatabase12_properties_typeProperties_server": {
+						"value": "[parameters('LSAzureSqlDatabase12_properties_typeProperties_server')]"
+					},
+					"LSAzureSqlDatabase12_properties_typeProperties_database": {
+						"value": "[parameters('LSAzureSqlDatabase12_properties_typeProperties_database')]"
+					},
+					"LSAzureSqlDatabase12_properties_typeProperties_userName": {
+						"value": "[parameters('LSAzureSqlDatabase12_properties_typeProperties_userName')]"
+					},
+					"LS_Bulk_properties_typeProperties_url": {
+						"value": "[parameters('LS_Bulk_properties_typeProperties_url')]"
+					},
+					"LS_Bulk_sink_properties_typeProperties_url": {
+						"value": "[parameters('LS_Bulk_sink_properties_typeProperties_url')]"
+					},
+					"LS_CSV_properties_typeProperties_url": {
+						"value": "[parameters('LS_CSV_properties_typeProperties_url')]"
+					},
+					"LS_Excel_sink_properties_typeProperties_url": {
+						"value": "[parameters('LS_Excel_sink_properties_typeProperties_url')]"
+					},
+					"LS_Json_properties_typeProperties_url": {
+						"value": "[parameters('LS_Json_properties_typeProperties_url')]"
+					},
+					"LS_Json_sink_properties_typeProperties_url": {
+						"value": "[parameters('LS_Json_sink_properties_typeProperties_url')]"
+					},
+					"LS_SFTP_properties_typeProperties_url": {
+						"value": "[parameters('LS_SFTP_properties_typeProperties_url')]"
+					},
+					"LS_SFTP_PQ_properties_typeProperties_url": {
+						"value": "[parameters('LS_SFTP_PQ_properties_typeProperties_url')]"
+					},
+					"LS_SQL_Sink_properties_typeProperties_url": {
+						"value": "[parameters('LS_SQL_Sink_properties_typeProperties_url')]"
+					},
+					"LS_Snowflake1_properties_typeProperties_database": {
+						"value": "[parameters('LS_Snowflake1_properties_typeProperties_database')]"
+					},
+					"LS_rest_Sink_properties_typeProperties_url": {
+						"value": "[parameters('LS_rest_Sink_properties_typeProperties_url')]"
+					},
+					"LS_restapi_properties_typeProperties_url": {
+						"value": "[parameters('LS_restapi_properties_typeProperties_url')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "ADF-VB8B-ETL-DEVEnv01_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"L_EXCEL_Storage_accountKey": {
+						"value": "[parameters('L_EXCEL_Storage_accountKey')]"
+					},
+					"blob2adlsAzureDataLakeStorage1_accountKey": {
+						"value": "[parameters('blob2adlsAzureDataLakeStorage1_accountKey')]"
+					},
+					"L_EXCEL_Storage_properties_typeProperties_url": {
+						"value": "[parameters('L_EXCEL_Storage_properties_typeProperties_url')]"
+					},
+					"blob2adlsAzureDataLakeStorage1_properties_typeProperties_url": {
+						"value": "[parameters('blob2adlsAzureDataLakeStorage1_properties_typeProperties_url')]"
+					},
+					"integrationRuntime1_properties_typeProperties_linkedInfo_resourceId": {
+						"value": "[parameters('integrationRuntime1_properties_typeProperties_linkedInfo_resourceId')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'ADF-VB8B-ETL-DEVEnv01_ArmTemplate_0')]"
+			]
+		},
+		{
+			"name": "ADF-VB8B-ETL-DEVEnv01_ArmTemplate_2",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_2.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"LSSqlServer1_password": {
+						"value": "[parameters('LSSqlServer1_password')]"
+					},
+					"LSSqlServer1_properties_typeProperties_server": {
+						"value": "[parameters('LSSqlServer1_properties_typeProperties_server')]"
+					},
+					"LSSqlServer1_properties_typeProperties_database": {
+						"value": "[parameters('LSSqlServer1_properties_typeProperties_database')]"
+					},
+					"LSSqlServer1_properties_typeProperties_userName": {
+						"value": "[parameters('LSSqlServer1_properties_typeProperties_userName')]"
+					},
+					"Tr_sample_snowflake_properties_typeProperties_scope": {
+						"value": "[parameters('Tr_sample_snowflake_properties_typeProperties_scope')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'ADF-VB8B-ETL-DEVEnv01_ArmTemplate_1')]"
+			]
+		},
+		{
+			"name": "ADF-VB8B-ETL-DEVEnv01_ArmTemplate_3",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_3.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"Tr_sample_csv_properties_PL1_MASTER_parameters_Trigger": {
+						"value": "[parameters('Tr_sample_csv_properties_PL1_MASTER_parameters_Trigger')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'ADF-VB8B-ETL-DEVEnv01_ArmTemplate_2')]"
+			]
+		}
+	]
+}
