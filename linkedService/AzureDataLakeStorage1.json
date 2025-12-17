@@ -1,0 +1,21 @@
+{
+	"name": "AzureDataLakeStorage1",
+	"properties": {
+		"annotations": [],
+		"type": "AzureBlobFS",
+		"typeProperties": {
+			"url": "https://adlsdevvbsource01.dfs.core.windows.net/",
+			"tenant": "e6793b43-941f-434f-82c6-6705364f7f87",
+			"servicePrincipalId": "cf314d1a-613e-4689-96ff-c616f8c88b08",
+			"servicePrincipalCredentialType": "ServicePrincipalKey",
+			"servicePrincipalCredential": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "GeekAzureKeyVault1",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "datasecretid"
+			}
+		}
+	}
+}
