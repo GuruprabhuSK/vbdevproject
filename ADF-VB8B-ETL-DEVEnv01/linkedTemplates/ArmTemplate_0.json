@@ -7,6 +7,10 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "ADF-VB8B-ETL-DEVEnv01"
 		},
+		"AzureDataLakeStorage2sink_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage2sink'"
+		},
 		"EventAzureBlobStorage1_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'EventAzureBlobStorage1'"
@@ -75,9 +79,13 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'LS_Snowflake1'"
 		},
-		"LS_rest_Sink_accountKey": {
-			"type": "secureString",
-			"metadata": "Secure string for 'accountKey' of 'LS_rest_Sink'"
+		"AzureDataLakeStorage2sink_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevvboardraw01.dfs.core.windows.net/"
+		},
+		"GeekAzureKeyVault1_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://geekcoderskeyvault.vault.azure.net/"
 		},
 		"LS CSV SINK_properties_typeProperties_url": {
 			"type": "string",
@@ -174,20 +182,29 @@
 		"LS_Snowflake1_properties_typeProperties_database": {
 			"type": "string",
 			"defaultValue": "DBAZURESNOW"
-		},
-		"LS_rest_Sink_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://adlsdevvbsource01.dfs.core.windows.net/"
-		},
-		"LS_restapi_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://retoolapi.dev/myM1AQ/data"
 		}
 	},
 	"variables": {
 		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
 	},
 	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureDataLakeStorage2sink')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('AzureDataLakeStorage2sink_properties_typeProperties_url')]",
+					"accountKey": {
+						"type": "SecureString",
+						"value": "[parameters('AzureDataLakeStorage2sink_accountKey')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
 		{
 			"name": "[concat(parameters('factoryName'), '/EventAzureBlobStorage1')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
@@ -197,6 +214,19 @@
 				"type": "AzureBlobStorage",
 				"typeProperties": {
 					"connectionString": "[parameters('EventAzureBlobStorage1_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/GeekAzureKeyVault1')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureKeyVault",
+				"typeProperties": {
+					"baseUrl": "[parameters('GeekAzureKeyVault1_properties_typeProperties_baseUrl')]"
 				}
 			},
 			"dependsOn": []
@@ -505,38 +535,6 @@
 					"useUtcTimestamps": false
 				},
 				"version": "1.1"
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/LS_rest_Sink')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureBlobFS",
-				"typeProperties": {
-					"url": "[parameters('LS_rest_Sink_properties_typeProperties_url')]",
-					"accountKey": {
-						"type": "SecureString",
-						"value": "[parameters('LS_rest_Sink_accountKey')]"
-					}
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/LS_restapi')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "RestService",
-				"typeProperties": {
-					"url": "[parameters('LS_restapi_properties_typeProperties_url')]",
-					"enableServerCertificateValidation": true,
-					"authenticationType": "Anonymous"
-				}
 			},
 			"dependsOn": []
 		}

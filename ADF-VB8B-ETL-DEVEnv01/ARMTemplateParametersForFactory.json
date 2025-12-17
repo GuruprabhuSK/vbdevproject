@@ -5,6 +5,9 @@
 		"factoryName": {
 			"value": "ADF-VB8B-ETL-DEVEnv01"
 		},
+		"AzureDataLakeStorage2sink_accountKey": {
+			"value": ""
+		},
 		"EventAzureBlobStorage1_connectionString": {
 			"value": ""
 		},
@@ -67,6 +70,21 @@
 		},
 		"blob2adlsAzureDataLakeStorage1_accountKey": {
 			"value": ""
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://adlsdevvbsource01.dfs.core.windows.net/"
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_tenant": {
+			"value": "e6793b43-941f-434f-82c6-6705364f7f87"
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_servicePrincipalId": {
+			"value": "cf314d1a-613e-4689-96ff-c616f8c88b08"
+		},
+		"AzureDataLakeStorage2sink_properties_typeProperties_url": {
+			"value": "https://adlsdevvboardraw01.dfs.core.windows.net/"
+		},
+		"GeekAzureKeyVault1_properties_typeProperties_baseUrl": {
+			"value": "https://geekcoderskeyvault.vault.azure.net/"
 		},
 		"LS CSV SINK_properties_typeProperties_url": {
 			"value": "https://adlsdevvbsource01.dfs.core.windows.net/"
