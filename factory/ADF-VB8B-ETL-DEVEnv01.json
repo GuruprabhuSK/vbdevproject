@@ -1,0 +1,9 @@
+{
+	"name": "ADF-VB8B-ETL-DEVEnv01",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "fc4f9796-ecb8-4d33-ad46-e59cfa52fd82",
+		"tenantId": "e6793b43-941f-434f-82c6-6705364f7f87"
+	}
+}

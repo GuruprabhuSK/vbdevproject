@@ -1,0 +1,21 @@
+{
+	"name": "blobsinkParquet1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "blob2adlsAzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "event_trigger",
+				"fileSystem": "inputsrc"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

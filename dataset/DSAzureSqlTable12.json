@@ -1,0 +1,13 @@
+{
+	"name": "DSAzureSqlTable12",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LSAzureSqlDatabase12",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
