@@ -1,0 +1,19 @@
+{
+	"name": "Jsonsourceinfo",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage2sink",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "Table_Source_Datalake.json",
+				"fileSystem": "manualfiles"
+			}
+		},
+		"schema": {}
+	}
+}
