@@ -5,9 +5,21 @@
 			"referenceName": "LSAzureSqlDatabase12",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"tablename_source": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "AzureSqlTable",
-		"schema": []
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": {
+				"value": "@dataset().tablename_source",
+				"type": "Expression"
+			}
+		}
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"
 }
