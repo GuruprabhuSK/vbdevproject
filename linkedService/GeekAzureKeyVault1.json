@@ -1,0 +1,10 @@
+{
+	"name": "GeekAzureKeyVault1",
+	"properties": {
+		"annotations": [],
+		"type": "AzureKeyVault",
+		"typeProperties": {
+			"baseUrl": "https://geekcoderskeyvault.vault.azure.net/"
+		}
+	}
+}
