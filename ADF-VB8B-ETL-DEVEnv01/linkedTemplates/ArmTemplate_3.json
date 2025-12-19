@@ -620,12 +620,7 @@
 													"type": "PipelineReference"
 												},
 												"waitOnCompletion": true,
-												"parameters": {
-													"Trigger": {
-														"value": "@pipeline().parameters.Trigger",
-														"type": "Expression"
-													}
-												}
+												"parameters": {}
 											}
 										}
 									]
