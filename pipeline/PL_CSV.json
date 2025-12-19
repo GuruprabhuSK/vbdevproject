@@ -101,7 +101,7 @@
 						"partitionOption": "None"
 					},
 					"dataset": {
-						"referenceName": "DSAzureSqlTable12",
+						"referenceName": "DSAzureSqlTable11",
 						"type": "DatasetReference"
 					}
 				}
